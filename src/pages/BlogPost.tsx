@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { blogPosts } from "@/data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import NotFound from "./NotFound";
+import SocialShare from "@/components/SocialShare";
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -31,18 +32,24 @@ const BlogPost = () => {
                     </Button>
 
                     <div className="space-y-4">
-                        <div className="flex flex-wrap gap-2 items-center text-sm text-muted-foreground">
-                            <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
-                                {post.category}
-                            </Badge>
-                            <div className="flex items-center gap-1">
-                                <Calendar className="h-4 w-4" />
-                                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                        <div className="flex flex-wrap gap-2 items-center justify-between">
+                            <div className="flex flex-wrap gap-2 items-center text-sm text-muted-foreground">
+                                <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                                    {post.category}
+                                </Badge>
+                                <div className="flex items-center gap-1">
+                                    <Calendar className="h-4 w-4" />
+                                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                    <Clock className="h-4 w-4" />
+                                    <span>{post.readTime}</span>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-1">
-                                <Clock className="h-4 w-4" />
-                                <span>{post.readTime}</span>
-                            </div>
+                            <SocialShare
+                                title={post.title}
+                                url={`${window.location.origin}/blog/${post.slug}`}
+                            />
                         </div>
 
                         <h1 className="text-4xl md:text-5xl font-bold font-heading leading-tight">

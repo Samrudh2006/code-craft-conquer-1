@@ -118,7 +118,17 @@ const Hero = () => {
               >
                 Get In Touch
               </Button>
-              <Button variant="outline" size="lg" className="border-secondary/50 hover:bg-secondary/10">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-secondary/50 hover:bg-secondary/10"
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = '/resume.pdf';
+                  link.download = 'Samrudh_Dwivedula_Resume.pdf';
+                  link.click();
+                }}
+              >
                 <Download className="mr-2 h-4 w-4" />
                 Resume
               </Button>

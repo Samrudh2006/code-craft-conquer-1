@@ -1,0 +1,68 @@
+{
+    "hero": {
+        "badge": "CS ENGINEERING · AI SPECIALIST",
+        "name": "SAMRUDH DWIVEDULA",
+        "tagline": "AI × Data × Security Innovator",
+        "description": "Passionate about building intelligent secure systems through the intersection of Artificial Intelligence, Data Science, and Network Security. Focused on ethical AI and innovative solutions for real-world challenges.",
+        "viewProjects": "View Projects",
+        "getInTouch": "Get In Touch",
+        "resume": "Resume"
+    },
+    "about": {
+        "badge": "ABOUT ME",
+        "title": "Who I Am",
+        "description": "I'm a Computer Science & Engineering student with a deep passion for Artificial Intelligence, Data Science, and Network Security. My journey in tech is driven by curiosity and a commitment to creating solutions that make a difference."
+    },
+    "skills": {
+        "badge": "SKILLS & EXPERTISE",
+        "title": "Technical Arsenal",
+        "description": "A comprehensive toolkit spanning AI/ML, Security, Cloud, and Full-Stack Development"
+    },
+    "stats": {
+        "badge": "LIVE ACTIVITY",
+        "title": "Coding Stats",
+        "description": "Real-time metrics tracking my development journey and coding habits",
+        "weeklyActivity": "Weekly Activity",
+        "topLanguages": "Top Languages",
+        "lastSevenDays": "Last 7 Days"
+    },
+    "guestbook": {
+        "badge": "VISITOR MESSAGES",
+        "title": "Guestbook",
+        "description": "Leave a message and be part of my journey!",
+        "signGuestbook": "Sign the Guestbook",
+        "yourName": "Your Name",
+        "yourMessage": "Your Message",
+        "placeholder": "Leave a message, feedback, or just say hi!",
+        "submit": "Sign Guestbook",
+        "recentMessages": "Recent Messages",
+        "noMessages": "No messages yet. Be the first to sign!",
+        "entries": "entries",
+        "entry": "entry"
+    },
+    "blog": {
+        "badge": "BLOG & ARTICLES",
+        "title": "Technical Writings",
+        "description": "Sharing insights, tutorials, and case studies on AI, Security, and Full-Stack Development",
+        "readArticle": "Read Article",
+        "viewAll": "View All Articles",
+        "backToArticles": "Back to Articles"
+    },
+    "contact": {
+        "badge": "GET IN TOUCH",
+        "title": "Let's Connect",
+        "description": "Have a project in mind or want to collaborate? Feel free to reach out!",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send Message"
+    },
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "blog": "Blog",
+        "contact": "Contact"
+    }
+}

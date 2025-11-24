@@ -1,0 +1,68 @@
+{
+    "hero": {
+        "badge": "INGENIERÍA CS · ESPECIALISTA EN IA",
+        "name": "SAMRUDH DWIVEDULA",
+        "tagline": "Innovador en IA × Datos × Seguridad",
+        "description": "Apasionado por construir sistemas seguros e inteligentes a través de la intersección de Inteligencia Artificial, Ciencia de Datos y Seguridad de Redes. Enfocado en IA ética y soluciones innovadoras para desafíos del mundo real.",
+        "viewProjects": "Ver Proyectos",
+        "getInTouch": "Contactar",
+        "resume": "Currículum"
+    },
+    "about": {
+        "badge": "SOBRE MÍ",
+        "title": "Quién Soy",
+        "description": "Soy un estudiante de Ingeniería en Ciencias de la Computación con una profunda pasión por la Inteligencia Artificial, la Ciencia de Datos y la Seguridad de Redes. Mi viaje en tecnología está impulsado por la curiosidad y el compromiso de crear soluciones que marquen la diferencia."
+    },
+    "skills": {
+        "badge": "HABILIDADES Y EXPERIENCIA",
+        "title": "Arsenal Técnico",
+        "description": "Un conjunto completo de herramientas que abarca IA/ML, Seguridad, Nube y Desarrollo Full-Stack"
+    },
+    "stats": {
+        "badge": "ACTIVIDAD EN VIVO",
+        "title": "Estadísticas de Codificación",
+        "description": "Métricas en tiempo real que rastrean mi viaje de desarrollo y hábitos de codificación",
+        "weeklyActivity": "Actividad Semanal",
+        "topLanguages": "Principales Lenguajes",
+        "lastSevenDays": "Últimos 7 Días"
+    },
+    "guestbook": {
+        "badge": "MENSAJES DE VISITANTES",
+        "title": "Libro de Visitas",
+        "description": "¡Deja un mensaje y sé parte de mi viaje!",
+        "signGuestbook": "Firmar el Libro de Visitas",
+        "yourName": "Tu Nombre",
+        "yourMessage": "Tu Mensaje",
+        "placeholder": "¡Deja un mensaje, comentario o simplemente saluda!",
+        "submit": "Firmar Libro",
+        "recentMessages": "Mensajes Recientes",
+        "noMessages": "Aún no hay mensajes. ¡Sé el primero en firmar!",
+        "entries": "entradas",
+        "entry": "entrada"
+    },
+    "blog": {
+        "badge": "BLOG Y ARTÍCULOS",
+        "title": "Escritos Técnicos",
+        "description": "Compartiendo ideas, tutoriales y estudios de caso sobre IA, Seguridad y Desarrollo Full-Stack",
+        "readArticle": "Leer Artículo",
+        "viewAll": "Ver Todos los Artículos",
+        "backToArticles": "Volver a Artículos"
+    },
+    "contact": {
+        "badge": "CONTACTO",
+        "title": "Conectemos",
+        "description": "¿Tienes un proyecto en mente o quieres colaborar? ¡No dudes en contactarme!",
+        "name": "Nombre",
+        "email": "Correo Electrónico",
+        "message": "Mensaje",
+        "send": "Enviar Mensaje"
+    },
+    "nav": {
+        "home": "Inicio",
+        "about": "Sobre Mí",
+        "skills": "Habilidades",
+        "projects": "Proyectos",
+        "blog": "Blog",
+        "contact": "Contacto"
+    }
+}

@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import App from "./App.tsx";
 import "./index.css";
+import "./i18n";
 
 if (typeof window !== "undefined") {
   const sendToParent = (data: any) => {
@@ -8,7 +9,7 @@ if (typeof window !== "undefined") {
       if (window.parent && window.parent !== window) {
         window.parent.postMessage(data, "*");
       }
-    } catch {}
+    } catch { }
   };
 
   window.addEventListener("error", (event) => {
