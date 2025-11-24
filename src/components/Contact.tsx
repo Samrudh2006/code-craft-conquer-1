@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const contactSchema = z.object({
   name: z
@@ -36,15 +37,26 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       contactSchema.parse(formData);
       setErrors({});
-      
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast.success("Message sent successfully!");
+
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        'service_bf4baay',
+        'template_d7j9d9k',
+        templateParams,
+        'dfbyum6uGBhzV6LsT'
+      );
+
+      toast.success("Message sent successfully! I'll get back to you soon.");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -56,6 +68,8 @@ const Contact = () => {
         });
         setErrors(errorMap);
         toast.error("Please fix the errors in the form");
+      } else {
+        toast.error("Failed to send message. Please try again or email me directly.");
       }
     } finally {
       setIsSubmitting(false);
