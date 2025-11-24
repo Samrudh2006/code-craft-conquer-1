@@ -43,7 +43,7 @@ const Blog = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((article, index) => (
+            {blogPosts.slice(0, 3).map((article, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
