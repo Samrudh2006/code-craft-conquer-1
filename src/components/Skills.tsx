@@ -6,83 +6,63 @@ import { Code, Database, Cloud, Shield, Cpu, Brain } from "lucide-react";
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Languages",
       icon: Code,
       skills: [
         { name: "Python", proficiency: 95 },
+        { name: "C", proficiency: 85 },
         { name: "C++", proficiency: 85 },
-        { name: "Java", proficiency: 80 },
         { name: "JavaScript", proficiency: 90 },
-        { name: "TypeScript", proficiency: 88 }
+        { name: "HTML5", proficiency: 95 },
+        { name: "CSS3", proficiency: 90 }
       ],
       color: "from-blue-500 to-cyan-500",
-    },
-    {
-      title: "AI/ML Tools",
-      icon: Brain,
-      skills: [
-        { name: "TensorFlow", proficiency: 90 },
-        { name: "PyTorch", proficiency: 85 },
-        { name: "Scikit-learn", proficiency: 92 },
-        { name: "Keras", proficiency: 88 },
-        { name: "OpenCV", proficiency: 82 }
-      ],
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      title: "Security Tools",
-      icon: Shield,
-      skills: [
-        { name: "Kali Linux", proficiency: 88 },
-        { name: "Wireshark", proficiency: 85 },
-        { name: "Metasploit", proficiency: 80 },
-        { name: "Burp Suite", proficiency: 82 },
-        { name: "Nmap", proficiency: 90 }
-      ],
-      color: "from-red-500 to-orange-500",
-    },
-    {
-      title: "Cloud & DevOps",
-      icon: Cloud,
-      skills: [
-        { name: "AWS", proficiency: 85 },
-        { name: "GCP", proficiency: 80 },
-        { name: "Docker", proficiency: 88 },
-        { name: "Git", proficiency: 95 },
-        { name: "GitHub Actions", proficiency: 82 }
-      ],
-      color: "from-green-500 to-emerald-500",
     },
     {
       title: "Web Technologies",
       icon: Cpu,
       skills: [
-        { name: "React.js", proficiency: 92 },
-        { name: "Node.js", proficiency: 88 },
-        { name: "Next.js", proficiency: 90 },
-        { name: "Flask", proficiency: 85 },
+        { name: "React", proficiency: 92 },
+        { name: "NodeJS", proficiency: 88 },
         { name: "Express.js", proficiency: 87 }
       ],
       color: "from-yellow-500 to-amber-500",
     },
     {
+      title: "Data Science",
+      icon: Brain,
+      skills: [
+        { name: "NumPy", proficiency: 92 },
+        { name: "Pandas", proficiency: 90 },
+        { name: "Matplotlib", proficiency: 85 }
+      ],
+      color: "from-purple-500 to-pink-500",
+    },
+    {
       title: "Databases",
       icon: Database,
       skills: [
-        { name: "MySQL", proficiency: 88 },
         { name: "MongoDB", proficiency: 90 },
-        { name: "PostgreSQL", proficiency: 85 },
-        { name: "SQLite", proficiency: 82 },
-        { name: "Redis", proficiency: 80 }
+        { name: "MySQL", proficiency: 88 }
       ],
       color: "from-indigo-500 to-violet-500",
+    },
+    {
+      title: "Tools & Platforms",
+      icon: Cloud,
+      skills: [
+        { name: "Netlify", proficiency: 90 },
+        { name: "Vercel", proficiency: 92 },
+        { name: "Portfolio", proficiency: 100 }
+      ],
+      color: "from-green-500 to-emerald-500",
     },
   ];
 
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background pointer-events-none" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -116,7 +96,7 @@ const Skills = () => {
                 >
                   <Card className="p-6 h-full glass-panel hover:shadow-2xl transition-all group relative overflow-hidden">
                     <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
-                    
+
                     <div className="relative z-10 space-y-4">
                       <div className="flex items-center gap-3">
                         <motion.div
@@ -155,8 +135,8 @@ const Skills = () => {
                                 initial={{ width: 0 }}
                                 whileInView={{ width: `${skill.proficiency}%` }}
                                 viewport={{ once: true }}
-                                transition={{ 
-                                  duration: 1, 
+                                transition={{
+                                  duration: 1,
                                   delay: index * 0.1 + skillIndex * 0.05,
                                   ease: "easeOut"
                                 }}

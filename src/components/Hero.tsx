@@ -193,7 +193,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent rounded-full blur-3xl opacity-30 animate-pulse" />
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/50 glow-box">
                   <img
-                    src={profilePhoto}
+                    src="/avatar.png"
                     alt="Samrudh Dwivedula - AI × Data × Security Innovator"
                     className="w-full h-full object-cover"
                   />
