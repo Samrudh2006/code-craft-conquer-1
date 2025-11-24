@@ -33,7 +33,7 @@ All colors MUST be HSL.
     --glow-violet: 270 60% 60%;
     --glass-bg: 210 25% 12%;
     --radius: 1rem;
-    
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -69,7 +69,7 @@ All colors MUST be HSL.
     --glow-cyan: 180 100% 50%;
     --glow-violet: 270 60% 60%;
     --glass-bg: 210 25% 12%;
-    
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -122,11 +122,11 @@ All colors MUST be HSL.
   .glass-panel {
     @apply bg-card/70 backdrop-blur-xl border border-border/50;
   }
-  
+
   .glow-text {
     text-shadow: 0 0 20px hsl(var(--glow-cyan));
   }
-  
+
   .glow-box {
     box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3);
   }
@@ -159,5 +159,31 @@ All colors MUST be HSL.
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary));
+  }
+
+  /* Micro-interactions */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px hsl(var(--primary) / 0.2);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

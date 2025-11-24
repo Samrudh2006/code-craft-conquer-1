@@ -10,7 +10,6 @@ import Blog from "@/components/Blog";
 import GitHubStats from "@/components/GitHubStats";
 import CodingStats from "@/components/CodingStats";
 import Guestbook from "@/components/Guestbook";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { FloatingParticles } from "@/components/FloatingParticles";
@@ -20,6 +19,8 @@ import AIChatbot from "@/components/AIChatbot";
 import ProjectExplainerAgent from "@/components/ProjectExplainerAgent";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
+import Certifications from "@/components/Certifications";
+import Internships from "@/components/Internships";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,14 +36,15 @@ const Index = () => {
         <Hero />
         <About />
         <Skills />
+        <Certifications />
         <Projects />
+        <Internships />
         <GitHubStats />
         <CodingStats />
         <Achievements />
         <Experience />
         <Blog />
         <Guestbook />
-        <Testimonials />
         <Contact />
         <Footer />
         <BackToTop />
