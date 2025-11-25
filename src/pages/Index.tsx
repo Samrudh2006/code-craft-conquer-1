@@ -14,11 +14,14 @@ import { ThreeDParticles } from "@/components/ThreeDParticles";
 import LoadingScreen from "@/components/LoadingScreen";
 import AIChatbot from "@/components/AIChatbot";
 import ProjectExplainerAgent from "@/components/ProjectExplainerAgent";
-import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import Certifications from "@/components/Certifications";
 import Internships from "@/components/Internships";
 import DeveloperActivity from "@/components/DeveloperActivity";
+import CustomCursor from "@/components/CustomCursor";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import FloatingActionButton from "@/components/FloatingActionButton";
+import KonamiCode from "@/components/KonamiCode";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +29,10 @@ const Index = () => {
   return (
     <>
       {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
+      <CustomCursor />
       <ScrollProgress />
+      <AnimatedBackground />
+      <KonamiCode />
       <div className="min-h-screen bg-background dark">
         <FloatingParticles />
         <ThreeDParticles />
@@ -43,7 +49,7 @@ const Index = () => {
         <Guestbook />
         <Contact />
         <Footer />
-        <BackToTop />
+        <FloatingActionButton />
         <AIChatbot />
         <ProjectExplainerAgent />
       </div>

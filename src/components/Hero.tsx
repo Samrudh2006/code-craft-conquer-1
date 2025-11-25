@@ -139,27 +139,50 @@ const Hero = () => {
                 href="https://github.com/Samrudh2006"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-colors"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-all duration-300 group"
+                style={{
+                  boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 5,
+                  boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)',
+                }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Github className="h-5 w-5" />
+                <Github className="h-5 w-5 text-violet-400 group-hover:text-violet-300 transition-colors" />
               </motion.a>
               <motion.a
-                href="#"
-                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-colors"
-                whileHover={{ scale: 1.1, rotate: -5 }}
+                href="https://linkedin.com/in/samrudhdwivedula"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-all duration-300 group"
+                style={{
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: -5,
+                  boxShadow: '0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3)',
+                }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
               </motion.a>
               <motion.a
                 href="mailto:samrudhdwivedula12@gmail.com"
-                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-colors"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="p-3 rounded-lg glass-panel hover:bg-primary/10 transition-all duration-300 group"
+                style={{
+                  boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)',
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 5,
+                  boxShadow: '0 0 30px rgba(239, 68, 68, 0.6), 0 0 60px rgba(239, 68, 68, 0.3)',
+                }}
                 whileTap={{ scale: 0.9 }}
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5 text-red-400 group-hover:text-red-300 transition-colors" />
               </motion.a>
             </motion.div>
           </div>
