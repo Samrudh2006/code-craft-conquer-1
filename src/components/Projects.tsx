@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink, Github, Filter } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ThreeDCard from "@/components/ThreeDCard";
 
 const Projects = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
@@ -78,7 +79,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-muted/30 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -191,114 +192,115 @@ const Projects = () => {
                     onHoverStart={() => setFlippedCard(index)}
                     onHoverEnd={() => setFlippedCard(null)}
                   >
-                    <div className="relative h-96 preserve-3d">
-                      <AnimatePresence mode="wait">
-                        {flippedCard !== index ? (
-                          <motion.div
-                            key="front"
-                            initial={{ rotateY: 0 }}
-                            animate={{ rotateY: 0 }}
-                            exit={{ rotateY: 90 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0 backface-hidden"
-                          >
-                            <Card className="p-8 h-full glass-panel hover:shadow-2xl transition-all flex flex-col justify-between group">
-                              <div className="space-y-4">
-                                <div className="text-6xl">{project.icon}</div>
-                                <div>
-                                  <h3 className="text-2xl font-bold text-foreground font-heading group-hover:text-primary transition-colors">
-                                    {project.title}
-                                  </h3>
-                                  <p className="text-muted-foreground">{project.shortDesc}</p>
-                                  <div className="flex gap-2 mt-2">
-                                    <Badge variant="secondary" className="text-xs">
-                                      {project.category}
-                                    </Badge>
-                                    <Badge 
-                                      variant="outline" 
-                                      className={`text-xs ${
-                                        project.complexity === "Advanced" 
-                                          ? "border-red-500 text-red-500" 
-                                          : project.complexity === "Intermediate"
-                                          ? "border-yellow-500 text-yellow-500"
-                                          : "border-green-500 text-green-500"
-                                      }`}
-                                    >
-                                      {project.complexity}
-                                    </Badge>
+                    <ThreeDCard className="h-96">
+                      <div className="relative h-full preserve-3d">
+                        <AnimatePresence mode="wait">
+                          {flippedCard !== index ? (
+                            <motion.div
+                              key="front"
+                              initial={{ rotateY: 0 }}
+                              animate={{ rotateY: 0 }}
+                              exit={{ rotateY: 90 }}
+                              transition={{ duration: 0.3 }}
+                              className="absolute inset-0 backface-hidden"
+                            >
+                              <Card className="p-8 h-full glass-panel hover:shadow-2xl transition-all flex flex-col justify-between group">
+                                <div className="space-y-4">
+                                  <div className="text-6xl">{project.icon}</div>
+                                  <div>
+                                    <h3 className="text-2xl font-bold text-foreground font-heading group-hover:text-primary transition-colors">
+                                      {project.title}
+                                    </h3>
+                                    <p className="text-muted-foreground">{project.shortDesc}</p>
+                                    <div className="flex gap-2 mt-2">
+                                      <Badge variant="secondary" className="text-xs">
+                                        {project.category}
+                                      </Badge>
+                                      <Badge
+                                        variant="outline"
+                                        className={`text-xs ${project.complexity === "Advanced"
+                                            ? "border-red-500 text-red-500"
+                                            : project.complexity === "Intermediate"
+                                              ? "border-yellow-500 text-yellow-500"
+                                              : "border-green-500 text-green-500"
+                                          }`}
+                                      >
+                                        {project.complexity}
+                                      </Badge>
+                                    </div>
+                                  </div>
+                                  <div className="flex flex-wrap gap-2">
+                                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                                      <Badge key={tagIndex} variant="secondary" className="text-xs">
+                                        {tag}
+                                      </Badge>
+                                    ))}
+                                    {project.tags.length > 3 && (
+                                      <Badge variant="outline" className="text-xs">
+                                        +{project.tags.length - 3} more
+                                      </Badge>
+                                    )}
                                   </div>
                                 </div>
-                                <div className="flex flex-wrap gap-2">
-                                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                                    <Badge key={tagIndex} variant="secondary" className="text-xs">
-                                      {tag}
-                                    </Badge>
-                                  ))}
-                                  {project.tags.length > 3 && (
-                                    <Badge variant="outline" className="text-xs">
-                                      +{project.tags.length - 3} more
-                                    </Badge>
-                                  )}
+                                <p className="text-sm text-muted-foreground text-center">
+                                  Hover to see details →
+                                </p>
+                              </Card>
+                            </motion.div>
+                          ) : (
+                            <motion.div
+                              key="back"
+                              initial={{ rotateY: -90 }}
+                              animate={{ rotateY: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="absolute inset-0 backface-hidden"
+                            >
+                              <Card className="p-6 h-full glass-panel bg-gradient-to-br from-primary/5 to-secondary/5 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                  <h3 className="text-xl font-bold text-foreground font-heading">
+                                    {project.title}
+                                  </h3>
+                                  <p className="text-sm text-foreground/80">{project.description}</p>
+                                  <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag, tagIndex) => (
+                                      <Badge key={tagIndex} variant="secondary" className="text-xs">
+                                        {tag}
+                                      </Badge>
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
-                              <p className="text-sm text-muted-foreground text-center">
-                                Hover to see details →
-                              </p>
-                            </Card>
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            key="back"
-                            initial={{ rotateY: -90 }}
-                            animate={{ rotateY: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="absolute inset-0 backface-hidden"
-                          >
-                            <Card className="p-6 h-full glass-panel bg-gradient-to-br from-primary/5 to-secondary/5 flex flex-col justify-between">
-                              <div className="space-y-4">
-                                <h3 className="text-xl font-bold text-foreground font-heading">
-                                  {project.title}
-                                </h3>
-                                <p className="text-sm text-foreground/80">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                  {project.tags.map((tag, tagIndex) => (
-                                    <Badge key={tagIndex} variant="secondary" className="text-xs">
-                                      {tag}
-                                    </Badge>
-                                  ))}
-                                </div>
-                              </div>
-                              <div className="flex gap-3 pt-4">
-                                <Button variant="outline" size="sm" className="flex-1" asChild>
-                                  <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={(e) => e.stopPropagation()}
-                                  >
-                                    <Github className="mr-2 h-4 w-4" />
-                                    Code
-                                  </a>
-                                </Button>
-                                {project.demo !== "#" && (
-                                  <Button size="sm" className="flex-1" asChild>
+                                <div className="flex gap-3 pt-4">
+                                  <Button variant="outline" size="sm" className="flex-1" asChild>
                                     <a
-                                      href={project.demo}
+                                      href={project.github}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       onClick={(e) => e.stopPropagation()}
                                     >
-                                      <ExternalLink className="mr-2 h-4 w-4" />
-                                      Live Demo
+                                      <Github className="mr-2 h-4 w-4" />
+                                      Code
                                     </a>
                                   </Button>
-                                )}
-                              </div>
-                            </Card>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                                  {project.demo !== "#" && (
+                                    <Button size="sm" className="flex-1" asChild>
+                                      <a
+                                        href={project.demo}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={(e) => e.stopPropagation()}
+                                      >
+                                        <ExternalLink className="mr-2 h-4 w-4" />
+                                        Live Demo
+                                      </a>
+                                    </Button>
+                                  )}
+                                </div>
+                              </Card>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </ThreeDCard>
                   </motion.div>
                 ))}
               </motion.div>

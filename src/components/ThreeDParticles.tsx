@@ -60,8 +60,8 @@ export const ThreeDParticles = () => {
                 const opacity = 0.2 + (particle.z / 100) * 0.6;
 
                 // Parallax effect based on mouse position
-                const parallaxX = (mousePosition.x - 50) * (particle.z / 100) * 0.5;
-                const parallaxY = (mousePosition.y - 50) * (particle.z / 100) * 0.5;
+                const parallaxX = (mousePosition.x - 50) * (particle.z / 100) * 0.8;
+                const parallaxY = (mousePosition.y - 50) * (particle.z / 100) * 0.8;
 
                 return (
                     <motion.div
@@ -75,16 +75,17 @@ export const ThreeDParticles = () => {
                             backgroundColor: particle.color,
                             opacity: opacity,
                             filter: `blur(${(1 - particle.z / 100) * 2}px)`,
+                            boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
                         }}
                         animate={{
                             x: [
                                 parallaxX,
-                                parallaxX + Math.sin(particle.id) * 50,
+                                parallaxX + Math.sin(particle.id) * 30,
                                 parallaxX,
                             ],
                             y: [
                                 parallaxY,
-                                parallaxY + Math.cos(particle.id) * 50,
+                                parallaxY + Math.cos(particle.id) * 30,
                                 parallaxY,
                             ],
                             scale: [scale, scale * 1.2, scale],
@@ -100,76 +101,42 @@ export const ThreeDParticles = () => {
                 );
             })}
 
-            {/* Floating geometric shapes */}
-            {[...Array(5)].map((_, i) => (
+            {/* Floating Geometric Shapes */}
+            {[...Array(6)].map((_, i) => (
                 <motion.div
                     key={`shape-${i}`}
-                    className="absolute"
+                    className="absolute opacity-20"
                     style={{
-                        left: `${20 + i * 20}%`,
-                        top: `${30 + i * 10}%`,
-                        width: 100,
-                        height: 100,
+                        left: `${15 + i * 15}%`,
+                        top: `${20 + (i % 3) * 25}%`,
+                        width: 60 + (i % 3) * 20,
+                        height: 60 + (i % 3) * 20,
+                        perspective: "1000px",
                     }}
                     animate={{
                         rotateX: [0, 360],
                         rotateY: [0, 360],
-                        rotateZ: [0, 180],
-                        scale: [1, 1.2, 1],
+                        y: [0, -30, 0],
                     }}
                     transition={{
-                        duration: 20 + i * 5,
+                        duration: 25 + i * 5,
                         repeat: Infinity,
                         ease: "linear",
                     }}
                 >
                     <div
-                        className="w-full h-full border-2 opacity-10"
+                        className="w-full h-full border border-primary/30 relative preserve-3d"
                         style={{
-                            borderColor: i % 2 === 0 ? "hsl(var(--primary))" : "hsl(var(--secondary))",
-                            transform: "perspective(1000px) rotateX(45deg) rotateY(45deg)",
+                            transformStyle: "preserve-3d",
                         }}
-                    />
+                    >
+                        {/* Cube faces simulation */}
+                        <div className="absolute inset-0 border border-primary/30 translate-z-10" style={{ transform: "translateZ(30px)" }} />
+                        <div className="absolute inset-0 border border-secondary/30 -translate-z-10" style={{ transform: "translateZ(-30px)" }} />
+                        <div className="absolute inset-0 border border-accent/30 rotate-y-90" style={{ transform: "rotateY(90deg)" }} />
+                    </div>
                 </motion.div>
             ))}
-
-            {/* Gradient orbs */}
-            <motion.div
-                className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
-                style={{
-                    background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)",
-                    left: "10%",
-                    top: "20%",
-                }}
-                animate={{
-                    x: [0, 100, 0],
-                    y: [0, -50, 0],
-                    scale: [1, 1.2, 1],
-                }}
-                transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                }}
-            />
-            <motion.div
-                className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl"
-                style={{
-                    background: "radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%)",
-                    right: "10%",
-                    bottom: "20%",
-                }}
-                animate={{
-                    x: [0, -100, 0],
-                    y: [0, 50, 0],
-                    scale: [1, 1.3, 1],
-                }}
-                transition={{
-                    duration: 18,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                }}
-            />
         </div>
     );
 };

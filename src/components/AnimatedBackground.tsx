@@ -17,19 +17,30 @@ const AnimatedBackground = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-background">
+            {/* Noise Texture Overlay */}
+            <div
+                className="absolute inset-0 opacity-[0.03] mix-blend-overlay z-50"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+            />
+
             {/* Animated Gradient Mesh */}
             <motion.div
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0 opacity-40"
                 style={{
-                    background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, hsl(var(--primary) / 0.3), transparent 50%), 
-                       radial-gradient(circle at ${100 - mousePosition.x}% ${100 - mousePosition.y}%, hsl(var(--secondary) / 0.3), transparent 50%)`,
+                    background: `
+                        radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, hsl(var(--primary) / 0.15), transparent 40%), 
+                        radial-gradient(circle at ${100 - mousePosition.x}% ${100 - mousePosition.y}%, hsl(var(--secondary) / 0.15), transparent 40%),
+                        radial-gradient(circle at 50% 50%, hsl(var(--accent) / 0.05), transparent 60%)
+                    `,
                 }}
                 animate={{
-                    scale: [1, 1.1, 1],
+                    scale: [1, 1.05, 1],
                 }}
                 transition={{
-                    duration: 8,
+                    duration: 10,
                     repeat: Infinity,
                     ease: "easeInOut",
                 }}
@@ -37,7 +48,7 @@ const AnimatedBackground = () => {
 
             {/* Floating Particles/Stars */}
             <div className="absolute inset-0">
-                {[...Array(50)].map((_, i) => (
+                {[...Array(30)].map((_, i) => (
                     <motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-primary rounded-full"
@@ -46,40 +57,34 @@ const AnimatedBackground = () => {
                             top: `${Math.random() * 100}%`,
                         }}
                         animate={{
-                            y: [0, -30, 0],
-                            opacity: [0.2, 1, 0.2],
-                            scale: [1, 1.5, 1],
+                            y: [0, -40, 0],
+                            opacity: [0, 0.8, 0],
+                            scale: [0, 1.5, 0],
                         }}
                         transition={{
-                            duration: 3 + Math.random() * 4,
+                            duration: 4 + Math.random() * 6,
                             repeat: Infinity,
-                            delay: Math.random() * 5,
+                            delay: Math.random() * 10,
+                            ease: "easeInOut",
                         }}
                     />
                 ))}
             </div>
 
             {/* Animated Grid Lines */}
-            <svg className="absolute inset-0 w-full h-full opacity-10">
+            <svg className="absolute inset-0 w-full h-full opacity-[0.03]">
                 <defs>
                     <pattern
                         id="grid"
-                        width="50"
-                        height="50"
+                        width="60"
+                        height="60"
                         patternUnits="userSpaceOnUse"
                     >
-                        <motion.path
-                            d="M 50 0 L 0 0 0 50"
+                        <path
+                            d="M 60 0 L 0 0 0 60"
                             fill="none"
-                            stroke="hsl(var(--primary))"
-                            strokeWidth="0.5"
-                            animate={{
-                                strokeOpacity: [0.3, 0.6, 0.3],
-                            }}
-                            transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                            }}
+                            stroke="currentColor"
+                            strokeWidth="1"
                         />
                     </pattern>
                 </defs>
@@ -87,28 +92,28 @@ const AnimatedBackground = () => {
             </svg>
 
             {/* Glowing Orbs */}
-            {[...Array(3)].map((_, i) => (
+            {[...Array(2)].map((_, i) => (
                 <motion.div
                     key={`orb-${i}`}
-                    className="absolute w-96 h-96 rounded-full blur-3xl"
+                    className="absolute w-[500px] h-[500px] rounded-full blur-[100px]"
                     style={{
                         background: i === 0
-                            ? "hsl(var(--primary) / 0.1)"
-                            : i === 1
-                                ? "hsl(var(--secondary) / 0.1)"
-                                : "hsl(var(--accent) / 0.1)",
-                        left: `${20 + i * 30}%`,
-                        top: `${30 + i * 20}%`,
+                            ? "radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%)"
+                            : "radial-gradient(circle, hsl(var(--secondary) / 0.1), transparent 70%)",
+                        left: i === 0 ? "10%" : "auto",
+                        right: i === 1 ? "10%" : "auto",
+                        top: i === 0 ? "20%" : "60%",
                     }}
                     animate={{
-                        x: [0, 100, 0],
-                        y: [0, -100, 0],
-                        scale: [1, 1.2, 1],
+                        x: [0, 50, 0],
+                        y: [0, -50, 0],
+                        scale: [1, 1.1, 1],
                     }}
                     transition={{
-                        duration: 15 + i * 5,
+                        duration: 20,
                         repeat: Infinity,
                         ease: "easeInOut",
+                        delay: i * 5,
                     }}
                 />
             ))}
