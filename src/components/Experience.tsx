@@ -7,30 +7,30 @@ const Experience = () => {
   const experiences = [
     {
       type: "Education",
-      title: "Computer Science & Engineering",
-      organization: "Specialization in AI, Data Science & Network Security",
+      title: "Bachelor of Technology (B.Tech), Computer Science & Engineering",
+      organization: "Aditya University",
       location: "India",
-      period: "2023 - Present",
-      description: "Pursuing advanced studies in Artificial Intelligence, Data Science, and Network Security with focus on practical applications.",
-      highlights: ["AI/ML Research", "Security Analysis", "Full-Stack Development"],
+      period: "Sep 2024 - Sep 2028",
+      description: "Pursuing B.Tech in Computer Science with a Minor in AI (IIT Mandi). Focused on Data Science, Machine Learning, and Full-Stack development.",
+      highlights: ["Minor in AI (IIT Mandi)", "Relevant coursework: DBMS, Agile Software Engineering", "Projects: FarmIntellect, CureCoders"]
     },
     {
-      type: "Certification",
-      title: "NPTEL Certifications",
-      organization: "IIT/IISc Online Learning",
-      location: "Online",
-      period: "2024",
-      description: "Completed multiple NPTEL courses in advanced computer science topics.",
-      highlights: ["Data Structures", "Algorithms", "AI Fundamentals"],
+      type: "Education",
+      title: "Intermediate",
+      organization: "Sri Prakash Junior College",
+      location: "India",
+      period: "Jul 2022 - Sep 2024",
+      description: "Completed intermediate education with emphasis on STEM subjects.",
+      highlights: ["Core focus: Mathematics, Physics, Computer Science"]
     },
     {
-      type: "Course",
-      title: "AI & Data Science Course",
-      organization: "IIT Mandi",
-      location: "Online",
-      period: "2024",
-      description: "Advanced training in artificial intelligence and data science methodologies.",
-      highlights: ["Machine Learning", "Deep Learning", "Data Analytics"],
+      type: "Education",
+      title: "High School",
+      organization: "Narayana E Techno School",
+      location: "India",
+      period: "Jun 2017 - Mar 2022",
+      description: "Completed primary and secondary education with a strong foundation in core subjects.",
+      highlights: ["Strong foundation in fundamentals and early exposure to coding"]
     },
   ];
 
@@ -50,7 +50,7 @@ const Experience = () => {
               EXPERIENCE & EDUCATION
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold font-heading">
-              Professional <span className="text-primary glow-text">Journey</span>
+              Educational <span className="text-primary glow-text">Journey</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Building expertise through continuous learning and hands-on projects

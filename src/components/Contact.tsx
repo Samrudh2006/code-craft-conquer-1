@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, FileText, Calendar, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -87,16 +87,18 @@ const Contact = () => {
     }
   };
 
+  // Primary CTA buttons (left column) - keep minimal and prominent
   const connectLinks = [
     { icon: Mail, label: "Email", href: "mailto:samrudhdwivedula1@gmail.com", color: "from-red-500 to-orange-500" },
     { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/samrudhdwivedula", color: "from-blue-500 to-cyan-500" },
     { icon: Github, label: "GitHub", href: "https://github.com/Samrudh2006", color: "from-purple-500 to-pink-500" },
   ];
 
-  const contactInfo = [
-    { icon: Mail, label: "Email", value: "samrudhdwivedula1@gmail.com", href: "mailto:samrudhdwivedula1@gmail.com" },
-    { icon: Linkedin, label: "LinkedIn", value: "Connect with me", href: "https://linkedin.com/in/samrudhdwivedula" },
-    { icon: Github, label: "GitHub", value: "View repositories", href: "https://github.com/Samrudh2006" },
+  // Right column: consolidated, non-redundant quick action cards
+  const rightCards = [
+    { icon: Mail, title: "Email", subtitle: "samrudhdwivedula1@gmail.com", href: "mailto:samrudhdwivedula1@gmail.com" },
+    { icon: FileText, title: "Resume", subtitle: "Download CV (PDF)", href: "/resume.pdf" },
+    { icon: Calendar, title: "Schedule", subtitle: "Book a 15-min call", href: "https://calendly.com/your-link" },
   ];
 
   return (
@@ -105,11 +107,15 @@ const Contact = () => {
         <div className="space-y-12">
           <div className="space-y-4">
             <Badge variant="outline" className="bg-badge text-badge-foreground border-border">
-              MESSAGE
+              CONTACT
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Get In <span className="text-primary">Touch</span>
+            <h2 className="text-4xl md:text-5xl font-bold hero-title">
+              Let's <span className="gradient-accent">Connect & Collaborate</span>
             </h2>
+            <p className="lead max-w-3xl mx-auto">
+              I respond to all messages within 24 hours. Use the form for detailed messages or quick links to email,
+              view my resume, or book a short call. Looking for internships, remote roles, or collaborations.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -207,38 +213,39 @@ const Contact = () => {
                       </>
                     )}
                   </Button>
+                  <p className="text-sm text-muted-foreground mt-2">You'll receive a response within 24 hours. If urgent, email me directly.</p>
                 </form>
               </Card>
             </div>
 
-            {/* Right Column - Contact Info Cards */}
+            {/* Right Column - Quick Action Cards */}
             <div className="space-y-4">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
+              {rightCards.map((card, index) => {
+                const Icon = card.icon;
                 return (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
+                    transition={{ delay: 0.2 + index * 0.08 }}
                   >
                     <Card className="p-6 hover:shadow-xl transition-all group">
                       <div className="flex items-center gap-3">
                         <motion.div
                           className="p-3 bg-primary/10 rounded-lg"
-                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileHover={{ scale: 1.05, rotate: 3 }}
                         >
                           <Icon className="h-6 w-6 text-primary group-hover:animate-glow" />
                         </motion.div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                          <p className="text-sm text-muted-foreground mb-1">{card.title}</p>
                           <a
-                            href={info.href}
+                            href={card.href}
                             className="text-base font-medium hover:text-primary transition-colors truncate block"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={card.href.startsWith("http") ? "_blank" : "_self"}
+                            rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                           >
-                            {info.value}
+                            {card.subtitle}
                           </a>
                         </div>
                       </div>
@@ -246,8 +253,38 @@ const Contact = () => {
                   </motion.div>
                 );
               })}
+
+              {/* Location Map placed inline in the right column for better visual balance */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Card className="p-6 hover:shadow-xl transition-all">
+                  <div className="flex items-start gap-3">
+                    <div className="p-3 bg-primary/10 rounded-lg">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-muted-foreground mb-1">Location</p>
+                      <p className="text-base font-medium mb-3">India — Open to remote opportunities and internships.</p>
+                      <div className="w-full h-48 rounded-md overflow-hidden">
+                        <iframe
+                          title="location-map"
+                          src="https://www.openstreetmap.org/export/embed.html?bbox=68.0%2C6.5%2C97.4%2C35.5&layer=mapnik"
+                          className="w-full h-full border-0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
             </div>
           </div>
+
+          {/* Map / Location moved into the right column (was previously below the grid) */}
+
+          {/* Extras removed as requested */}
         </div>
       </div>
     </section>

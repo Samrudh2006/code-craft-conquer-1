@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Brain, Shield, FolderGit2, BookOpen, Mail, Menu, X } from "lucide-react";
+import { Home, Brain, Shield, FolderGit2, BookOpen, Mail, Menu, X, Briefcase, Award } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,8 +12,17 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Active section detection
-      const sections = ["home", "skills", "projects", "achievements", "blog", "contact"];
+      // Active section detection (ordered to match navbar)
+      const sections = [
+        "home",
+        "skills",
+        "certifications",
+        "projects",
+        "internships",
+        "experience",
+        "blog",
+        "contact",
+      ];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -36,8 +44,11 @@ const Navigation = () => {
   const navItems = [
     { icon: Home, label: "Home", href: "#home", id: "home" },
     { icon: Brain, label: "Skills", href: "#skills", id: "skills" },
+    // Achievements should open Certifications section per request
+    { icon: FolderGit2, label: "Achievements", href: "#certifications", id: "certifications" },
     { icon: Shield, label: "Projects", href: "#projects", id: "projects" },
-    { icon: FolderGit2, label: "Achievements", href: "#achievements", id: "achievements" },
+    { icon: Briefcase, label: "Internships", href: "#internships", id: "internships" },
+    { icon: Award, label: "Educational Journey", href: "#experience", id: "experience" },
     { icon: BookOpen, label: "Blog", href: "#blog", id: "blog" },
     { icon: Mail, label: "Contact", href: "#contact", id: "contact" },
   ];
@@ -123,7 +134,6 @@ const Navigation = () => {
 
             {/* Right side controls */}
             <div className="flex items-center gap-2">
-              <LanguageSwitcher />
               <ThemeToggle />
 
               {/* Mobile menu button */}

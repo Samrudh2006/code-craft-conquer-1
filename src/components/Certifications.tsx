@@ -6,35 +6,71 @@ import { Award, Calendar, ExternalLink } from "lucide-react";
 const Certifications = () => {
     const certifications = [
         {
-            name: "Data Structures & Algorithms",
-            provider: "NPTEL - IIT Madras",
-            year: "2024",
-            achievement: "Top 1%",
-            topics: ["DSA", "Problem Solving", "Optimization"],
-            link: "#"
-        },
-        {
-            name: "Machine Learning Specialization",
-            provider: "Coursera - Stanford University",
-            year: "2024",
-            achievement: "Elite",
-            topics: ["ML", "Neural Networks", "Deep Learning"],
-            link: "#"
-        },
-        {
-            name: "Generative AI with Google Cloud",
-            provider: "Google Cloud",
-            year: "2025",
-            achievement: "Certified",
-            topics: ["GenAI", "LLMs", "Prompt Engineering"],
-            link: "#"
-        },
-        {
-            name: "Cybersecurity Fundamentals",
+            name: "Data Analysis with Python",
             provider: "IBM",
+            year: "2025",
+            achievement: "Issued Oct 2025",
+            topics: ["pandas", "numpy", "data analysis"],
+            link: "#",
+            id: "IEG0R25DHBFO"
+        },
+        {
+            name: "Prompt Engineering for ChatGPT",
+            provider: "Vanderbilt University",
+            year: "2025",
+            achievement: "Issued Sep 2025",
+            topics: ["Prompt Engineering", "LLMs", "ChatGPT"],
+            link: "#",
+            id: "QS3V3H5X6533"
+        },
+        {
+            name: "Agile Software Engineering",
+            provider: "Aditya University",
+            year: "2025",
+            achievement: "Issued Aug 2025",
+            topics: ["Agile", "Scrum", "Software Development"],
+            link: "#",
+            id: "44F4AWA2S8HK"
+        },
+        {
+            name: "Database Management Systems",
+            provider: "Aditya University",
+            year: "2025",
+            achievement: "Issued Aug 2025",
+            topics: ["SQL", "PL/SQL", "Database Design"],
+            link: "#",
+            id: "W28449DV2ZP4"
+        },
+        {
+            name: "Cisco Python Essentials",
+            provider: "Cisco",
             year: "2024",
-            achievement: "Professional",
-            topics: ["Network Security", "Cryptography", "Ethical Hacking"],
+            achievement: "Completed",
+            topics: ["Python", "Foundations"],
+            link: "#"
+        },
+        {
+            name: "Analytics Essentials",
+            provider: "(Provider)",
+            year: "2024",
+            achievement: "Completed",
+            topics: ["Analytics", "Data Insights"],
+            link: "#"
+        },
+        {
+            name: "Oracle Data & AI Foundations",
+            provider: "Oracle",
+            year: "2024",
+            achievement: "Completed",
+            topics: ["Data Foundations", "AI Basics"],
+            link: "#"
+        },
+        {
+            name: "Power BI Certified",
+            provider: "(Provider)",
+            year: "2024",
+            achievement: "Certified",
+            topics: ["Power BI", "Data Visualization"],
             link: "#"
         }
     ];
@@ -85,6 +121,8 @@ const Certifications = () => {
                                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            title={`Open ${cert.name} certificate`}
+                                            aria-label={`Open ${cert.name} certificate`}
                                         >
                                             <ExternalLink className="h-4 w-4 text-primary" />
                                         </a>
