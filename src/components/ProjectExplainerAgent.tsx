@@ -46,14 +46,14 @@ const projects: Record<string, Project> = {
     ],
   },
   comptracker: {
-    title: "Competitive Programming Tracker",
-    description: "A personal tracker for competitive programming progress across multiple platforms with analytics and performance insights.",
-    techStack: ["React", "Node.js", "PostgreSQL", "Chart.js", "Docker"],
+    title: "Samrudh Labs — Premium Agency",
+    description: "A polished agency website and showcase designed to present premium services, project case studies, and contact workflows for potential clients.",
+    techStack: ["Next.js", "React", "TypeScript", "Vercel", "Tailwind"],
     highlights: [
-      "Multi-platform integration",
-      "Performance analytics",
-      "Coding streak tracking",
-      "Problem difficulty analysis",
+      "Agency-style landing and case studies",
+      "Project showcase and demo links",
+      "Responsive contact & lead capture flows",
+      "Optimized for performance on Vercel",
     ],
   },
 };

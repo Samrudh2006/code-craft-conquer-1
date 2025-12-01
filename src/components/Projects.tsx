@@ -50,15 +50,15 @@ const Projects = () => {
       complexity: "Advanced",
     },
     {
-      title: "Competitive Programming Tracker",
-      shortDesc: "Progress Analytics Dashboard",
+      title: "Samrudh Labs — Premium Agency",
+      shortDesc: "Agency Landing & Projects Showcase",
       description:
-        "A data visualization dashboard that tracks competitive programming progress across multiple platforms, provides analytics, and suggests practice recommendations.",
-      tags: ["Streamlit", "Python", "Pandas", "Data Visualization", "Analytics"],
-      github: "https://github.com/Samrudh2006/competitive-programming-tracker",
-      demo: "https://competitive-programming-tracker.streamlit.app/",
-      icon: "📊",
-      category: "Data Science",
+        "A polished agency-style website and projects showcase built to highlight premium digital services, case studies, and contact flows for clients.",
+      tags: ["Next.js", "React", "TypeScript", "Vercel", "Tailwind"],
+      github: "https://github.com/Samrudh2006/samrudh-labs-premium-agency",
+      demo: "https://samrudh-labs-premium-agency-lpbizoa9s-24b11cs114-2780s-projects.vercel.app/",
+      icon: "🏢",
+      category: "Web",
       complexity: "Intermediate",
     },
   ];

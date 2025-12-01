@@ -33,6 +33,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSent, setLastSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +59,9 @@ const Contact = () => {
 
       toast.success("Message sent successfully! I'll get back to you soon.");
       setFormData({ name: "", email: "", message: "" });
+      setLastSent(true);
+      // hide confirmation after a short while
+      setTimeout(() => setLastSent(false), 6000);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errorMap: { [key: string]: string } = {};
@@ -96,9 +100,9 @@ const Contact = () => {
 
   // Right column: consolidated, non-redundant quick action cards
   const rightCards = [
-    { icon: Mail, title: "Email", subtitle: "samrudhdwivedula1@gmail.com", href: "mailto:samrudhdwivedula1@gmail.com" },
+    { icon: Mail, title: "Email", subtitle: "samrudhdwivedula1@gmail.com", href: "mailto:samrudhdwivedula1@gmail.com", person: { name: "Samrudh", initials: "S" } },
     { icon: FileText, title: "Resume", subtitle: "Download CV (PDF)", href: "/resume.pdf" },
-    { icon: Calendar, title: "Schedule", subtitle: "Book a 15-min call", href: "https://calendly.com/your-link" },
+    { icon: Calendar, title: "Schedule", subtitle: "Book a 15-min call", href: "https://calendly.com/your-link", person: { name: "Samrudh", initials: "S" } },
   ];
 
   return (
@@ -163,47 +167,50 @@ const Contact = () => {
               </div>
 
               {/* Contact Form */}
-              <Card className="p-6">
+              <Card className="p-6 bg-background/95 border border-border">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Your Name</Label>
+                    <Label htmlFor="name" className="text-base font-semibold text-foreground">Your Name</Label>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      className={errors.name ? "border-destructive" : ""}
+                      placeholder="Your full name"
+                      className={`${errors.name ? "border-destructive" : ""} text-foreground placeholder:text-muted-foreground placeholder:font-medium placeholder:text-base focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-shadow`}
                     />
                     {errors.name && (
                       <p className="text-sm text-destructive">{errors.name}</p>
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Your Email</Label>
+                    <Label htmlFor="email" className="text-base font-semibold text-foreground">Your Email</Label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
-                      className={errors.email ? "border-destructive" : ""}
+                      placeholder="you@example.com"
+                      className={`${errors.email ? "border-destructive" : ""} text-foreground placeholder:text-muted-foreground placeholder:font-medium placeholder:text-base focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-shadow`}
                     />
                     {errors.email && (
                       <p className="text-sm text-destructive">{errors.email}</p>
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Your Message</Label>
+                    <Label htmlFor="message" className="text-base font-semibold text-foreground">Your Message</Label>
                     <Textarea
                       id="message"
                       rows={6}
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className={errors.message ? "border-destructive" : ""}
+                      placeholder="Tell me a bit about your project or opportunity"
+                      className={`${errors.message ? "border-destructive" : ""} text-foreground placeholder:text-muted-foreground placeholder:font-medium placeholder:text-base focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-shadow`}
                     />
                     {errors.message && (
                       <p className="text-sm text-destructive">{errors.message}</p>
                     )}
                   </div>
-                  <Button type="submit" className="w-full group" size="lg" disabled={isSubmitting}>
+                  <Button type="submit" className="w-full group transform transition-transform hover:scale-105 hover:shadow-lg focus:ring-2 focus:ring-primary/30 bg-cyan-400 text-black hover:bg-cyan-500" size="lg" disabled={isSubmitting}>
                     {isSubmitting ? (
                       "Sending..."
                     ) : (
@@ -213,7 +220,10 @@ const Contact = () => {
                       </>
                     )}
                   </Button>
-                  <p className="text-sm text-muted-foreground mt-2">You'll receive a response within 24 hours. If urgent, email me directly.</p>
+                  <p className="text-sm text-muted-foreground mt-2">You’ll hear back within 24 hours — usually sooner. If it’s urgent, feel free to email me directly.</p>
+                  {lastSent && (
+                    <p className="text-sm text-success mt-2">Thanks — your message was sent. I’ll reply soon.</p>
+                  )}
                 </form>
               </Card>
             </div>
@@ -229,7 +239,7 @@ const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + index * 0.08 }}
                   >
-                    <Card className="p-6 hover:shadow-xl transition-all group">
+                    <Card className="p-6 bg-background/90 border border-border hover:shadow-lg transition-all group">
                       <div className="flex items-center gap-3">
                         <motion.div
                           className="p-3 bg-primary/10 rounded-lg"
@@ -241,12 +251,18 @@ const Contact = () => {
                           <p className="text-sm text-muted-foreground mb-1">{card.title}</p>
                           <a
                             href={card.href}
-                            className="text-base font-medium hover:text-primary transition-colors truncate block"
+                            className={`text-base font-medium transition-colors truncate block ${card.title === 'Schedule' ? 'text-cyan-400 hover:text-cyan-500 font-semibold' : card.title === 'Resume' ? 'text-muted-foreground' : 'hover:text-primary'}`}
                             target={card.href.startsWith("http") ? "_blank" : "_self"}
                             rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                           >
                             {card.subtitle}
                           </a>
+                          {card.person && (
+                            <div className="mt-3 flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full bg-cyan-400 text-black flex items-center justify-center text-xs font-semibold">{card.person.initials}</div>
+                              <div className="text-sm text-foreground">{card.person.name}</div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </Card>

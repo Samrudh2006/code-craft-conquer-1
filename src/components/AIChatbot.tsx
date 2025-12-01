@@ -21,7 +21,7 @@ const AIChatbot = () => {
 
   const quickResponses: Record<string, string> = {
     skills: "Samrudh specializes in AI/ML (TensorFlow, PyTorch), Security Tools (Kali Linux, Wireshark), Cloud (AWS, GCP), and full-stack development with Python, C++, Java, React, and Node.js.",
-    projects: "Key projects include FarmIntellect (agricultural AI platform), CureCoders (coding learning platform), VerityGuard (security tool), and a Competitive Programming Tracker.",
+    projects: "Key projects include FarmIntellect (agricultural AI platform), CureCoders (coding learning platform), VerityGuard (security tool), and Samrudh Labs — Premium Agency.",
     experience: "Samrudh is a Computer Science & Engineering student focused on AI, Data Science, and Network Security. He's completed certifications from NPTEL and IIT Mandi, and participated in multiple hackathons.",
     contact: "You can reach Samrudh at samrudhdwivedula1@gmail.com, connect on LinkedIn at linkedin.com/in/samrudhdwivedula, or view his code on GitHub at github.com/Samrudh2006",
     education: "Samrudh is currently pursuing Computer Science & Engineering with a specialization in Artificial Intelligence, Data Science, and Network Security.",
